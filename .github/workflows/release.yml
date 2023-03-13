@@ -17,7 +17,7 @@ jobs:
         run: |
           echo "Ref"
           echo $GITHUB_REF
-          echo "ref type"
+          echo "Ref type"
           echo $GITHUB_REF_TYPE          
 
       - name: Checkout
