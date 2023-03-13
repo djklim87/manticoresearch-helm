@@ -32,8 +32,8 @@ jobs:
 
       - name: Read outputs
         run: |
-          echo "Export variable"
-          echo $CHART_VERSION
+          echo "Import variable"
+          echo ${{ env.CHART_VERSION }}
 
 
       #
