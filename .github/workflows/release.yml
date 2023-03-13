@@ -31,12 +31,9 @@ jobs:
           echo "CHART_VERSION=$appVersion" >> $GITHUB_ENV
 
       - name: Read outputs
-          run: |
-            echo "Ref"
-            echo $GITHUB_REF
-            echo "Ref type"
-            echo $GITHUB_REF_TYPE
-
+        run: |
+          echo "Export variable"
+          echo $CHART_VERSION
 
 
       #
