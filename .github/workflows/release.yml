@@ -30,14 +30,14 @@ jobs:
           echo $appVersion=$(cat ./charts/manticoresearch/Chart.yaml | grep appVersion | cut -d' ' -f2)
           echo "CHART_VERSION=$appVersion" >> $GITHUB_ENV
 
-#      - name: Read outputs
-#          run: |
-#            echo "Ref"
-#            echo $GITHUB_REF
-#            echo "Ref type"
-#            echo $GITHUB_REF_TYPE
-#            echo "Version"
-#            echo $CHART_VERSION
+      - name: Read outputs
+          run: |
+            echo "Ref"
+            echo $GITHUB_REF
+            echo "Ref type"
+            echo $GITHUB_REF_TYPE
+            echo "Version"
+            echo $CHART_VERSION
 
 
       #
