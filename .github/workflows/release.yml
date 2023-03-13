@@ -27,7 +27,7 @@ jobs:
       - name: Write outputs
         run: |
           echo "Export variable"
-          echo $appVersion=$(cat ./charts/manticoresearch/Chart.yaml | grep appVersion | cut -d' ' -f2)
+          echo appVersion=$(cat ./charts/manticoresearch/Chart.yaml | grep appVersion | cut -d' ' -f2)
           echo "APP"
           echo $appVersion
           echo "EXPORT"
