@@ -36,8 +36,7 @@ jobs:
             echo $GITHUB_REF
             echo "Ref type"
             echo $GITHUB_REF_TYPE
-            echo "Version"
-            echo $CHART_VERSION
+
 
 
       #
