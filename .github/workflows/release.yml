@@ -26,11 +26,9 @@ jobs:
 
       - name: Write outputs
         run: |
-          ls
-          pwd
-#          echo "Export variable"
-#          $appVersion=$(cat ./charts/manticoresearch/Chart.yaml | grep appVersion | cut -d' ' -f2)
-#          echo "CHART_VERSION=$appVersion" >> $GITHUB_ENV
+          echo "Export variable"
+          $appVersion=$(cat ./charts/manticoresearch/Chart.yaml | grep appVersion | cut -d' ' -f2)
+          echo "CHART_VERSION=$appVersion" >> $GITHUB_ENV
 
 #      - name: Read outputs
 #          run: |
