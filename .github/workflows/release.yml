@@ -28,7 +28,10 @@ jobs:
         run: |
           echo "Export variable"
           echo $appVersion=$(cat ./charts/manticoresearch/Chart.yaml | grep appVersion | cut -d' ' -f2)
-          echo "CHART_VERSION=$appVersion" >> $GITHUB_ENV
+          echo "APP"
+          echo $appVersion
+          echo "EXPORT"
+          echo "chartVersion=$appVersion" >> $GITHUB_ENV
           echo "Import variable"
           echo ${{ env.CHART_VERSION }}
 
