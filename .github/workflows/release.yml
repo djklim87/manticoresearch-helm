@@ -44,13 +44,21 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - name: Build and push
+      - name: Build and push balancer
+        uses: docker/build-push-action@v4
+        with:
+          context: ./sources/manticore-balancer
+          platforms: linux/amd64,linux/arm64
+          push: ${{ github.event_name != 'pull_request' }}
+          tags: djklim87/helm-balancer:${{ env.chartVersion }}
+
+      - name: Build and push worker
         uses: docker/build-push-action@v4
         with:
           context: ./sources/manticore-worker
           platforms: linux/amd64,linux/arm64
           push: ${{ github.event_name != 'pull_request' }}
-          tags: djklim87/helm-balancer:${{ env.chartVersion }}
+          tags: djklim87/helm-worker:${{ env.chartVersion }}
 
       - name: Install Helm
         uses: azure/setup-helm@v1
