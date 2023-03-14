@@ -28,9 +28,7 @@ jobs:
         run: |
           echo "Export variable"
           echo "chartVersion=$(cat ./charts/manticoresearch/Chart.yaml | grep appVersion | cut -d' ' -f2)" >> $GITHUB_ENV
-          cat charts/manticoresearch/Chart.yaml | grep version: | cut -d' ' -f2
-          git tag
-          echo "isNeedToBuild=$( ! git tag | grep $(cat charts/manticoresearch/Chart.yaml | grep version: | cut -d' ' -f2))" >> $GITHUB_ENV
+          echo "isNeedToBuild=$( git tag | grep $(cat charts/manticoresearch/Chart.yaml | grep version: | cut -d' ' -f2))" >> $GITHUB_ENV
 
       - name: Read outputs
         run: |
@@ -51,7 +49,7 @@ jobs:
 
       - name: Build and push balancer
         uses: docker/build-push-action@v4
-        if: ${{ env.isNeedToBuild }}
+        if: ${{ ! env.isNeedToBuild }}
         with:
           context: ./sources/manticore-balancer
           platforms: linux/amd64,linux/arm64
@@ -60,7 +58,7 @@ jobs:
 
       - name: Build and push worker
         uses: docker/build-push-action@v4
-        if: ${{ env.isNeedToBuild }}
+        if: ${{ ! env.isNeedToBuild }}
         with:
           context: ./sources/manticore-worker
           platforms: linux/amd64,linux/arm64
