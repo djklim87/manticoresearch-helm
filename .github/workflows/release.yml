@@ -28,6 +28,8 @@ jobs:
         run: |
           echo "Export variable"
           echo "chartVersion=$(cat ./charts/manticoresearch/Chart.yaml | grep appVersion | cut -d' ' -f2)" >> $GITHUB_ENV
+          cat charts/manticoresearch/Chart.yaml | grep version: | cut -d' ' -f2
+          git tag
           echo "isNeedToBuild=$( ! git tag | $(cat charts/manticoresearch/Chart.yaml | grep version: | cut -d' ' -f2))" >> $GITHUB_ENV
 
       - name: Read outputs
